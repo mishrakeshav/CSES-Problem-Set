@@ -1,7 +1,7 @@
 # CSES-Problem-set &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/mishrakeshav/CSES-Problem-Set/blob/master/LICENSE)
 
 
-All the problems solved by me on <a href = "https://cses.fi/problemset/">cses.fi</a>
+Solutions to all the problems solved by me on <a href = "https://cses.fi/problemset/">cses.fi</a>
 ## Introductory Problems 
 
 <ul>
