@@ -16,23 +16,13 @@ const int mxN = 2e5;
 typedef std::complex<double> Complex;
 typedef std::valarray<Complex> CArray;
 using namespace std;
-int arr[mxN];
+bool compare(const ii & a, const ii & b){
+    return a.second < b.second;
+}
 void solve() {
    int n;
-   cin >> n;
-   vi v;
-   for(int i = 0; i < n; i++){
-       int a;
-       cin >> a;
-       int p = upper_bound(v.begin(), v.end(), a) - v.begin();
-       if(p < v.size()){
-           v[p] = a;
-       }
-       else{
-           v.push_back(a);
-       }
-   }
-   cout << v.size() << endl;
+   
+    
 }
  
 int main() {

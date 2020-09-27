@@ -18,32 +18,23 @@ typedef std::valarray<Complex> CArray;
 using namespace std;
 int arr[mxN];
 void solve() {
-   unordered_map<int,int> mymap;
+   map<int,int> mymap;
    int n;
    cin >> n;
    for(int i = 0; i < n; i++){
        cin >> arr[i];
    }
    int mx = 0;
-   int count = 0;
    int j = 0;
    for(int i = 0; i < n; i++){
-       if(mymap.count(arr[i])){
-           mx = max(mx,count);
-           while (j < n && mymap.count(arr[i]) && mymap[arr[i]] > 0){
-               mymap[arr[j]] -= 1;
+       if(mymap[arr[i]] > 0){
+           while(j < i && mymap[arr[i]] > 0){
+               mymap[arr[i]]--;
                j++;
-               count--;
            }
-           mymap[arr[i]] = 1;
-           count++;
-           mx = max(count,mx);
        }
-       else{
-           mymap[arr[i]] = 1;
-           count++;
-           mx = max(count,mx);
-       }
+       mymap[arr[i]] = 1;
+       mx = max(mx,i-j+1);
    }
    cout << mx << endl;
 }

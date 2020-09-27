@@ -18,21 +18,12 @@ typedef std::valarray<Complex> CArray;
 using namespace std;
 int arr[mxN];
 void solve() {
-   int n;
-   cin >> n;
-   vi v;
+   int x,n;
+   cin >> x >> n;
    for(int i = 0; i < n; i++){
-       int a;
-       cin >> a;
-       int p = upper_bound(v.begin(), v.end(), a) - v.begin();
-       if(p < v.size()){
-           v[p] = a;
-       }
-       else{
-           v.push_back(a);
-       }
+       cin >> arr[i];
    }
-   cout << v.size() << endl;
+   
 }
  
 int main() {

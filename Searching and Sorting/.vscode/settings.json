@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.tcc": "cpp"
+    },
+    "python.pythonPath": "/bin/python3"
+}
