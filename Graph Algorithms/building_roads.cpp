@@ -62,6 +62,7 @@ int main(){
             count++;
         }
     }
+    count -=2;
     cout << count << endl;
     for(int i = 1; i < vertices.size(); i++){
         cout << vertices[i-1] << " " << vertices[i] << endl;
