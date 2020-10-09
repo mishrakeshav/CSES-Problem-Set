@@ -14,11 +14,12 @@ class Vertex{
     vector<int> connections;
 };
 
-void dfs(unordered_map<int, Vertex>& graph, int n){
-    int count = 1;
+int dfs(unordered_map<int, Vertex>& graph, int n){
+    int count = 0;
     stack<Vertex> s;
     for(int i = 1; i <= n; i++){
         if(graph[i].visited) continue;
+        count++;
         s.push(graph[i]);
         graph[i].group = count;
         while(!s.empty()){
@@ -31,8 +32,9 @@ void dfs(unordered_map<int, Vertex>& graph, int n){
                 s.push(graph[i]);
             }
         }
-        count++;
+        
     }
+    return count;
 }
 int main(){
     rlimit cpu_time{.rlim_cur = 1, .rlim_max = 5}; 
@@ -52,17 +54,13 @@ int main(){
         graph[a].connections.push_back(b);
         graph[b].connections.push_back(a);
     }
-    dfs(graph,n);
-    int count = 1;
-    vector<int> vertices;
-    for(int i = 1; i <= n; i++){
-        if(count == graph[i].group){
-            vertices.push_back(graph[i].data);
-            count++;
+    int count = dfs(graph,n);
+    if(count != 2){
+        cout << "IMPOSSIBLE" << endl;
+    }else{
+        for(int i = 1; i <= n; i++){
+            cout << graph[i].group << " ";
         }
-    }
-    cout << vertices.size()-1 << endl;
-    for(int i = 1; i < vertices.size(); i++){
-        cout << vertices[i-1] << " " << vertices[i] << endl;
+        cout << endl;
     }
 }
