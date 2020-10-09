@@ -5,6 +5,7 @@
 const double PI = 3.141592653589793238460;
 const int mxN = 2e5;
 using namespace std;
+
 class Vertex{
     public:
     int data;
@@ -12,6 +13,7 @@ class Vertex{
     int group;
     vector<int> connections;
 };
+
 void bfs(unordered_map<int, Vertex>& graph, int n){
     int count = 1;
     stack<Vertex> s;
@@ -62,8 +64,7 @@ int main(){
             count++;
         }
     }
-    count -=2;
-    cout << count << endl;
+    cout << vertices.size()-1 << endl;
     for(int i = 1; i < vertices.size(); i++){
         cout << vertices[i-1] << " " << vertices[i] << endl;
     }
