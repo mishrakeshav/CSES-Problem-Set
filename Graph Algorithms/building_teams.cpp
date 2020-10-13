@@ -14,27 +14,22 @@ class Vertex{
     vector<int> connections;
 };
 
-int dfs(unordered_map<int, Vertex>& graph, int n){
-    int count = 0;
-    stack<Vertex> s;
-    for(int i = 1; i <= n; i++){
-        if(graph[i].visited) continue;
-        count++;
-        s.push(graph[i]);
-        graph[i].group = count;
-        while(!s.empty()){
-            Vertex v = s.top();
-            s.pop();
-            for(auto i: v.connections){
-                if(graph[i].visited) continue;
-                graph[i].visited = 1;
-                graph[i].group = count; 
-                s.push(graph[i]);
+void bfs(unordered_map<int, Vertex>& graph, int i, int color){
+    vector<int> q;
+    q.push_back(i);
+    while(q.size() != 0){
+        vector<int> new_q;
+        for(int j : q){
+            if(graph[j].visited) continue;
+            graph[j].visited = 1;
+            for(int k: graph[j].connections){
+                new_q.push_back(k);
             }
+            graph[j].group = color;
         }
-        
+        color ^= 1;
+        q = new_q;
     }
-    return count;
 }
 int main(){
     rlimit cpu_time{.rlim_cur = 1, .rlim_max = 5}; 
@@ -54,13 +49,20 @@ int main(){
         graph[a].connections.push_back(b);
         graph[b].connections.push_back(a);
     }
-    int count = dfs(graph,n);
-    if(count != 2){
-        cout << "IMPOSSIBLE" << endl;
-    }else{
-        for(int i = 1; i <= n; i++){
-            cout << graph[i].group << " ";
-        }
-        cout << endl;
+    for(int i = 1; i <=n ; i++){
+        if(graph[i].visited) continue;
+        bfs(graph,i,0);
     }
+    for(int i = 1; i <= n; i++){
+        for(int j:graph[i].connections){
+            if(graph[i].group == graph[j].group){
+                cout << "IMPOSSIBLE" << endl;
+                return 0;
+            }
+        }
+    }
+    for(int i = 1; i <=n; i++){
+        cout << graph[i].group + 1 << " ";
+    }
+    cout << endl;
 }
