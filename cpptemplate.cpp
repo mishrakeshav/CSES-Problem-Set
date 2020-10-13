@@ -12,5 +12,6 @@ int main(){
     rlimit cpu_time{.rlim_cur = 1, .rlim_max = 5}; 
     setrlimit(RLIMIT_CPU, &cpu_time);
     ios_base::sync_with_stdio(0);
+    cout << "hello world" << endl;
     
 }
