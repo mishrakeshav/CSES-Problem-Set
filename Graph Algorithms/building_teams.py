@@ -1,3 +1,4 @@
+from collections import deque
 class Vertex:
     def __init__(self,data):
         self.data = data 
@@ -5,8 +6,21 @@ class Vertex:
         self.group = 1 
         self.connections = []
 
-# fails 4 testcases
-# todo
+def bfs(graph,i,color):
+    q = deque()
+    q.append(i)
+    while q:
+        new = deque()
+        for j in q:
+            vertex = graph[j]
+            if vertex.visited: continue
+            vertex.visited = True 
+            vertex.group = color
+            for k in vertex.connections:
+                new.appendleft(k)
+        color ^=1 
+        q = new
+
 def solve():
     n, m = map(int,input().split())
     graph = dict()
@@ -16,22 +30,22 @@ def solve():
         a,b = map(int,input().split())
         graph[a].connections.append(b)
         graph[b].connections.append(a)
-    flag = False 
+    # color all the vertices levelwise using bfs
+    for i in range(1,n+1):
+        if graph[i].visited: continue
+        bfs(graph,i,0)
+    
+    # check if there are adjacent edges with the same color for 
+    # impossible condition 
     for i in range(1,n+1):
         for j in graph[i].connections:
-            if j <= i and graph[i].group == graph[j].group:
-                flag = True
-                break 
             if graph[i].group == graph[j].group:
-                graph[j].group = 0 if graph[i].group else 1
-
-    if flag:
-        print("IMPOSSIBLE")
-        return 
-
+                print('IMPOSSIBLE') 
+                return 
+    
     for i in range(1,n+1):
-        print(graph[i].group+1,end = " ")
+        print(graph[i].group + 1, end = " ")
     print()
-
+        
 if __name__ == '__main__':
     solve() 
