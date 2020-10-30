@@ -2,26 +2,7 @@
 
 
 Solutions to all the problems solved by me on <a href = "https://cses.fi/problemset/">cses.fi</a>
-## Introductory Problems 
 
-<ul>
-  <li>Weird Algorithm</li>
-  <li>Missing Number</li>
-  <li>Repetitions</li>
-  <li>Increasing Array</li>
-  <li>Permutations</li>
-  <li>Number Spiral</li>
-  <li>Two Knights</li>
-  <li>Two Sets</li>
-  <li>Bit Strings</li>
-  <li>Trailing Zeros</li>
-  <li>Coin Piles</li>
-  <li>Palindrome Reorder</li>
-  <li>Creating Strings I</li>
-  <li>Apple Division</li>
-  <li>Chessboard and Queens</li>
-  <li>Grid Paths</li>
-<ul>
 
 ## Licensing
 
