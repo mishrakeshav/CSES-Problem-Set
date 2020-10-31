@@ -1,22 +1,28 @@
+def dfs(i,j,level):
+    info[i][j][level] = 1
+    info[i][j]["visited"] = True 
+    for i in range(4):
+        pass  
 
-class Vertex:
-    def __init__(self,data):
-        self.data = data 
-        self.visited = False 
-        self.connections = []
 
 def solve():
-    n,m = map(int,input().split())
-    graph = dict()
-    for i in range(1,n+1):
-        graph[i] = Vertex(i)
-
-    for _ in range(m):
-        a,b = map(int,input().split())
-        graph[a].connections.append(b)
-        graph[b].connections.append(a)
+    pass 
     
-    # todo
+
+    
+    
+    
     
 if __name__ == '__main__':
+    n,m = map(int,input().split())
+    matrix = []
+    for _ in range(n):
+        matrix.append(list(input())
+    info = []
+    for _ in range(n):
+        l = []
+        for __ in range(m):
+            l.append(dict())
+    v1 = [0,1,0,-1]
+    v2 = [-1,0,1,0]
     solve()
